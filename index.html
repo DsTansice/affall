@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>邀请码合集 | 一目了然</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+	
+	<style>
+		:root {
+			--bg: #0f0f2e;
+			--panel: rgba(139, 92, 246, 0.05);
+			--panel-strong: rgba(139, 92, 246, 0.09);
+			--text: #f5f3ff;
+			--muted: #a8a4c8;
+			--accent: #a78bfa;
+			--accent-2: #fbbf24;
+			--success: #34d399;
+			--danger: #ff6b6b;
+			--card-shadow: 0 12px 40px rgba(167, 139, 250, 0.25);
+			--radius: 14px;
+		}
+
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			font-family: 'Space Grotesk', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+			background: radial-gradient(circle at 10% 35%, rgba(167,139,250,0.25), transparent 35%),
+								radial-gradient(circle at 90% 10%, rgba(251,191,36,0.12), transparent 40%),
+								radial-gradient(circle at 50% 90%, rgba(52,211,153,0.08), transparent 50%),
+								linear-gradient(135deg, #0d0a22 0%, #0f0f2e 45%, #0a1240 100%);
+			color: var(--text);
+			min-height: 100vh;
+			padding: 32px 18px 48px;
+		}
+
+		.page {
+			max-width: 1180px;
+			margin: 0 auto;
+		}
+
+		header {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+			margin-bottom: 8px;
+		}
+
+		.title {
+			font-size: 32px;
+			font-weight: 700;
+			letter-spacing: -0.5px;
+		}
+
+		.subtitle {
+			color: var(--muted);
+			max-width: 720px;
+			line-height: 1.6;
+			font-size: 14px;
+		}
+
+		.controls {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			align-items: center;
+		}
+
+		.search {
+			flex: 1 1 260px;
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			background: var(--panel);
+			border: 1.5px solid rgba(251, 191, 36, 0.3);
+			border-radius: var(--radius);
+			padding: 10px 14px;
+			box-shadow: var(--card-shadow), inset 0 0 20px rgba(251, 191, 36, 0.05);
+			backdrop-filter: blur(12px);
+			transition: all 0.3s ease;
+		}
+
+		.search:focus-within { border-color: rgba(251, 191, 36, 0.6); box-shadow: var(--card-shadow), inset 0 0 20px rgba(251, 191, 36, 0.1), 0 0 20px rgba(251, 191, 36, 0.15); }
+
+		.search input {
+			flex: 1;
+			background: transparent;
+			border: none;
+			outline: none;
+			color: var(--text);
+			font-size: 15px;
+		}
+
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			max-width: 100%;
+		}
+
+		.chip {
+			padding: 8px 12px;
+			border-radius: 999px;
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			color: var(--text);
+			text-decoration: none;
+			font-size: 13px;
+			background: var(--panel);
+			transition: all 0.2s ease;
+			box-shadow: var(--card-shadow);
+			white-space: nowrap;
+		}
+
+		.chip:hover { border-color: var(--accent); color: #fff; background: rgba(167, 139, 250, 0.15); }
+
+		section { margin-top: 28px; }
+
+		.section-head {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 14px;
+		}
+
+		.section-title {
+			font-size: 22px;
+			font-weight: 700;
+			letter-spacing: -0.3px;
+		}
+
+		.pill {
+			padding: 4px 10px;
+			border-radius: 999px;
+			font-size: 12px;
+			color: #0b1224;
+			background: #dbeafe;
+			font-weight: 700;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			gap: 14px;
+		}
+
+		.card {
+			background: var(--panel);
+			border: 1px solid rgba(255, 255, 255, 0.08);
+			border-radius: var(--radius);
+			padding: 14px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			box-shadow: var(--card-shadow);
+			backdrop-filter: blur(12px);
+			transition: transform 0.18s ease, border-color 0.2s ease, background 0.2s ease;
+		}
+
+		.card:hover { transform: translateY(-3px) scale(1.01); border-color: rgba(167, 139, 250, 0.7); background: var(--panel-strong); box-shadow: 0 12px 40px rgba(167, 139, 250, 0.3); }
+
+		.card-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+		}
+
+		.card-title { font-weight: 700; font-size: 16px; }
+		.card-sub { color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+		.code-row {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			flex-wrap: wrap;
+		}
+
+		.code {
+			padding: 6px 10px;
+			border-radius: 10px;
+			background: rgba(167, 139, 250, 0.12);
+			border: 1px solid rgba(167, 139, 250, 0.35);
+			font-family: 'Space Grotesk', monospace;
+			font-size: 13px;
+			color: #ede9fe;
+		}
+
+		.copy-btn, .link-btn {
+			border: 1px solid rgba(255, 255, 255, 0.14);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--text);
+			border-radius: 10px;
+			padding: 6px 10px;
+			font-weight: 600;
+			font-size: 13px;
+			cursor: pointer;
+			transition: all 0.15s ease;
+		}
+
+		.copy-btn:hover, .link-btn:hover { border-color: var(--accent); color: #fff; }
+		.link-btn { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+
+		.note { color: var(--muted); font-size: 12px; line-height: 1.5; }
+
+		.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+		.tag {
+			font-size: 11px;
+			padding: 4px 8px;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.12);
+			color: var(--muted);
+			font-weight: 600;
+		}
+
+		.tag.success { color: #a7f3d0; border-color: rgba(52, 211, 153, 0.5); background: rgba(52, 211, 153, 0.15); }
+		.tag.danger { color: #ff9ca3; border-color: rgba(255, 107, 107, 0.5); background: rgba(255, 107, 107, 0.15); }
+		.tag.warn { color: #fca373; border-color: rgba(252, 163, 115, 0.5); background: rgba(252, 163, 115, 0.15); }
+
+		.empty { color: var(--muted); font-size: 14px; padding: 10px; text-align: center; border: 1px dashed rgba(255, 255, 255, 0.12); border-radius: var(--radius); }
+		.contact-links { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+		.contact-links.header-contacts { margin-top: 6px; }
+		.contact-links.footer-contacts { justify-content: center; margin-top: 24px; }
+		.contact-link { color: #e9d5ff; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.35); padding: 8px 12px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 13px; }
+		.contact-link:hover { border-color: #fbbf24; color: #fef3c7; background: rgba(251, 191, 36, 0.1); }
+		.stats-header { text-align: center; margin: 12px 0 20px 0; padding: 14px 16px; background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(167,139,250,0.12)); border: 1.5px solid rgba(251,191,36,0.3); border-radius: var(--radius); color: var(--text); font-size: 13px; font-weight: 600; box-shadow: 0 8px 25px rgba(251,191,36,0.1); }
+		.stats-header strong { color: #fbbf24; font-weight: 700; font-size: 15px; }
+		.stats-footer { text-align: center; margin-top: 28px; padding: 16px; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); border-radius: var(--radius); color: var(--text); font-size: 14px; }
+		.stats-footer strong { color: #fbbf24; font-weight: 700; }
+		.footer { text-align: center; margin-top: 20px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+		@media (max-width: 640px) {
+			.title { font-size: 26px; }
+			.grid { grid-template-columns: 1fr; }
+			body { padding: 22px 14px 36px; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header>
+			<div class="title">💰 邀请码福利合辑</div>
+			<div class="subtitle">精选 银行、证券、交易所、eSIM、钱包等渠道 的专属邀请码。</div>
+      <div class="subtitle">一键复制即可使用，持续更新，不错过每一个福利机会 ✨</div>
+			<div class="contact-links header-contacts"><a class="contact-link" href="https://t.me/v3ssrray" target="_blank" rel="noreferrer">💬 加入社群</a><a class="contact-link" href="https://t.me/v3mew" target="_blank" rel="noreferrer">📢 订阅更新</a></div>
+			<div class="controls">
+				<label class="search">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" style="color: var(--muted);">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+					</svg>
+					<input id="search" type="search" placeholder="🔍 试试搜索「香港银行」「交易所」..." />
+				</label>
+				<div class="nav" aria-label="快速跳转">
+					<a class="chip" href="#hk-bank">📌 香港银行</a>
+					<a class="chip" href="#intl-bank">📌 国际银行</a>
+					<a class="chip" href="#macao-bank">📌 澳门银行</a>
+					<a class="chip" href="#hk-securities">📌 香港证券</a>
+					<a class="chip" href="#sg-securities">📌 新加坡证券</a>
+					<a class="chip" href="#us-securities">📌 美国证券</a>
+					<a class="chip" href="#exchanges">💱 交易所</a>
+					<a class="chip" href="#wallets">📌 加密钱包</a>
+					<a class="chip" href="#esim">📌 手机卡 / eSIM</a>
+					<a class="chip" href="#remit">📌 汇款</a>
+					<a class="chip" href="#vps-earn">📌 vps 挂机赚钱</a>
+					<a class="chip" href="#vps-reco">📌 VPS 推荐</a>
+					<a class="chip" href="#rebate">📌 返利网站</a>
+					<a class="chip" href="#domains">📌 域名推荐</a>
+					<a class="chip" href="#foreign">📌 其他国外平台</a>
+					<a class="chip" href="#domestic">📌 其他国内平台</a>
+					<a class="chip" href="#cn-bank">📌 国内银行</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="stats-header">🎁 <strong>135</strong> 个精选福利免费领取 · ⚡ 每日更新 · 💯 真实可用</div>
+
+		<section id="hk-bank">
+			<div class="section-head">
+				<div class="section-title">香港银行</div>
+				<span class="pill">本地</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="中银香港 M75211872070 香港银行">
+					<div class="card-head"><div class="card-title">中银香港 Boc HK</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">M75211872070</span><button class="copy-btn" data-code="M75211872070" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="card-sub">开户奖励邀请码</div>
+				</div>
+				<div class="card" data-search="ZA Bank RNR5T5 香港银行">
+					<div class="card-head"><div class="card-title">ZA Bank 众安银行</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">RNR5T5</span><button class="copy-btn" data-code="RNR5T5" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="card-sub">邀请码</div>
+				</div>
+				<div class="card" data-search="WeLab 汇立 FPKXPM 香港银行">
+					<div class="card-head"><div class="card-title">WeLab 汇立银行</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">FPKXPM</span><button class="copy-btn" data-code="FPKXPM" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="card-sub">邀请码</div>
+				</div>
+				<div class="card" data-search="inMotion 信银国际 中信 1Q4R7M2 香港银行">
+					<div class="card-head"><div class="card-title">inMotion 信银国际</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">1Q4R7M2</span><button class="copy-btn" data-code="1Q4R7M2" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="card-sub">邀请码</div>
+				</div>
+				<div class="card" data-search="香港 Fusion 富融">
+					<div class="card-head"><div class="card-title">Fusion 富融银行</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">CASH26FE</span><button class="copy-btn" data-code="CASH26FE" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="card-sub">邀请奖励</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="intl-bank">
+			<div class="section-head">
+				<div class="section-title">国际银行</div>
+				<span class="pill">全球</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="OCBC 新加坡 O7P9FDOS 已关门">
+					<div class="card-head"><div class="card-title">OCBC SG 新加坡</div><span class="tag warn">❌ 已关门</span></div>
+					<div class="code-row"><span class="code">O7P9FDOS</span><button class="copy-btn" data-code="O7P9FDOS" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="iFast GB 英国 ifastgb.com">
+					<div class="card-head"><div class="card-title">iFast GB 英国</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://www.ifastgb.com/tellafriend/shaobingy2347" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="N26 德国 shaobiny4278">
+					<div class="card-head"><div class="card-title">N26 德国</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">shaobiny4278</span><button class="copy-btn" data-code="shaobiny4278" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://n26.com/r/shaobiny4278" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="MyFin 保加利亚 SH00KMU0">
+					<div class="card-head"><div class="card-title">MyFin 保加利亚</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">SH00KMU0</span><button class="copy-btn" data-code="SH00KMU0" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="菲律宾 maya 银行 @tans0008">
+					<div class="card-head"><div class="card-title">菲律宾 maya 银行</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">@tans0008</span><button class="copy-btn" data-code="@tans0008" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.maya.ph/app/registration?invite=@tans0008" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="菲律宾 OwnBank JBHEDZ">
+					<div class="card-head"><div class="card-title">菲律宾 OwnBank</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">JBHEDZ</span><button class="copy-btn" data-code="JBHEDZ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://s.ownbank.com.ph/oFcFS2" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="英国 Curve">
+					<div class="card-head"><div class="card-title">英国 Curve 钱包</div><span class="tag"> 钱包</span><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://www.curve.com/join#D5ZQMA3N" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Monese 欧洲 SHAOB607 已过期">
+					<div class="card-head"><div class="card-title">Monese 欧洲</div><span class="tag warn">⏱️ 已过期</span></div>
+					<div class="code-row"><span class="code">SHAOB607</span><button class="copy-btn" data-code="SHAOB607" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Safepal Fait24 582343">
+					<div class="card-head"><div class="card-title">Safepal Fait24 瑞士</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">582343</span><button class="copy-btn" data-code="582343" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="East West Bank 美国 SHAO914937C01 已关门">
+					<div class="card-head"><div class="card-title">East West Bank 美国</div><span class="tag warn">❌ 已关门</span></div>
+					<div class="code-row"><span class="code">SHAO914937C01</span><button class="copy-btn" data-code="SHAO914937C01" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://digital.eastwestbank.com/cn/ref/consumer.html?c=SHAO914937C01" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="PokePay HK 401531">
+					<div class="card-head"><div class="card-title">PokePay HK 香港</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">401531</span><button class="copy-btn" data-code="401531" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://app.pokepay.cc/pages/invitation/regist?r=401531" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="DTCPay SG tchmbp">
+					<div class="card-head"><div class="card-title">DTCPay SG 新加坡</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">tchmbp</span><button class="copy-btn" data-code="tchmbp" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://personal.dtcpay.com?referralCode=tchmbp" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Bybit Card YNWJYN0">
+					<div class="card-head"><div class="card-title">Bybit Card</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">YNWJYN0</span><button class="copy-btn" data-code="YNWJYN0" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.bybits.org/cards/?ref=YNWJYN0&source=applet_invite" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Bybit EU Card AV6AAKQ">
+					<div class="card-head"><div class="card-title">Bybit EU Card</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">AV6AAKQ</span><button class="copy-btn" data-code="AV6AAKQ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.bybit.eu/cards/?ref=AV6AAKQ&source=applet_invite" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="COCA 英国 已过期">
+					<div class="card-head"><div class="card-title">COCA UK 英国</div><span class="tag"> U卡</span><span class="tag warn">⏱️ 已过期</span></div>
+					<a class="link-btn" href="https://wwallet.app.link/referral?referral_code=ge3BHFdwM3n" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="MetaMask Card 2GNSK4">
+					<div class="card-head"><div class="card-title">MetaMask Card</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">2GNSK4</span><button class="copy-btn" data-code="2GNSK4" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://link.metamask.io/rewards?referral=2GNSK4" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Decard 新加坡 66666P">
+					<div class="card-head"><div class="card-title">Decard SG 新加坡</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">66666P</span><button class="copy-btn" data-code="66666P" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://thedecard.com/dcscc/zh/signup?ref=66666P" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="UR 瑞士">
+					<div class="card-head"><div class="card-title">UR 瑞士</div><span class="tag"> U卡</span></div>
+					<div class="code-row"><span class="code">fzphsn</span><button class="copy-btn" data-code="fzphsn" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://get.ur.app/login?code=fzphsn" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="macao-bank">
+			<div class="section-head">
+				<div class="section-title">澳门银行</div>
+				<span class="pill">本地</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="澳门 国际银行 luso">
+					<div class="card-head"><div class="card-title">澳门国际银行（Luso Bank）</div><span class="tag"> 银行</span><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://mobile.lusobank.com.mo/lpifsptsi/redirect/44640d8d011f478ea2bc6832144f2173" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="card-sub">澳门银行</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="hk-securities">
+			<div class="section-head">
+				<div class="section-title">香港证券</div>
+				<span class="pill">券商</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="盈立证券 bdwu 入金2w">
+					<div class="card-head"><div class="card-title">盈立证券香港</div></div>
+					<div class="code-row"><span class="code">bdwu</span><button class="copy-btn" data-code="bdwu" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://m-dl.usmart66.com/u/1-0200e0Ft2r" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">入金2w奖励</div>
+				</div>
+				<div class="card" data-search="长桥证券 HK BE884V 渠道">
+					<div class="card-head"><div class="card-title">长桥证券 HK香港</div><span class="tag"> 渠道</span></div>
+					<div class="code-row"><span class="code">BE884V</span><button class="copy-btn" data-code="BE884V" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100040&invite-code=BE884V" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="华盛通 RUL3 渠道">
+					<div class="card-head"><div class="card-title">华盛通</div><span class="tag"> 渠道</span></div>
+					<div class="code-row"><span class="code">RUL3</span><button class="copy-btn" data-code="RUL3" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.hstbroker.com/kh/apply/online?_scnl=RUL3" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="盈宝证券 渠道 winbulls">
+					<div class="card-head"><div class="card-title">盈宝证券</div><span class="tag"> 渠道</span></div>
+					<a class="link-btn" href="https://www.winbulls.com/s/index.html?key=rauqmu" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="尊嘉金融 BDJT35 渠道">
+					<div class="card-head"><div class="card-title">尊嘉金融</div><span class="tag"> 渠道</span></div>
+					<div class="code-row"><span class="code">BDJT35</span><button class="copy-btn" data-code="BDJT35" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://opt.investassistant.com/miningopt/NewUserActivity/index?channelopen=YQAPP14&shareNew=470848" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="老虎证券 HK kowloon">
+					<div class="card-head"><div class="card-title">老虎证券 HK香港</div></div>
+					<div class="code-row"><span class="code">kowloon</span><button class="copy-btn" data-code="kowloon" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.tigersecurities.com/signup?invite=KOWLOON" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="富途牛牛 VG4UMWLN">
+					<div class="card-head"><div class="card-title">富途牛牛</div></div>
+					<div class="code-row"><span class="code">VG4UMWLN</span><button class="copy-btn" data-code="VG4UMWLN" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://j.futuhk.com/0142rX" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="卓锐证券">
+					<div class="card-head"><div class="card-title">卓锐证券</div></div>
+					<a class="link-btn" href="https://cam.zrsec.com/zhuorui_activity/hkla/login?channelId=2&inviteUserId=3963a907442f463faf278ac8615022f2" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="盈立证券香港专属渠道">
+					<div class="card-head"><div class="card-title">盈立证券香港专属渠道</div><span class="tag"> 渠道</span></div>
+					<div class="code-row"><span class="code">264241</span><button class="copy-btn" data-code="264241" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://m.usmart66.com/webapp/marketing/jump-register.html?register-ct=ic&register-cid=4745&ICode=264241#/register" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">入金10w拿奖励</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="sg-securities">
+			<div class="section-head">
+				<div class="section-title">新加坡证券</div>
+				<span class="pill">券商</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="盈立 uSMART SG uk5g">
+					<div class="card-head"><div class="card-title">盈立 uSMART SG新加坡</div></div>
+					<div class="code-row"><span class="code">uk5g</span><button class="copy-btn" data-code="uk5g" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://m.usmartsg.com/promo/overseas/bonus-dec.html?ICode=uk5g&langType=1&Id=" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="FSMone SG P0513076">
+					<div class="card-head"><div class="card-title">FSMone SG新加坡</div></div>
+					<div class="code-row"><span class="code">P0513076</span><button class="copy-btn" data-code="P0513076" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="长桥证券 SG BE884V">
+					<div class="card-head"><div class="card-title">长桥证券 SG新加坡</div></div>
+					<div class="code-row"><span class="code">BE884V</span><button class="copy-btn" data-code="BE884V" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://activity.lbmkt.ing/pages/longbridge/7415/index.html?app_id=longbridge&org_id=1&channel=HM20240006&account_channel=lb&lang=zh-CN&invite-code=BE884V&utm_source=longbridge_app_share" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="RockFlow">
+					<div class="card-head"><div class="card-title">RockFlow 新加坡</div><span class="tag warn">⏱️ 已过期</span></div>
+					<div class="code-row"><span class="code">Q7ZC4</span><button class="copy-btn" data-code="Q7ZC4" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://mobile.rockflow.ai/zh-Hans/intents?t=RB24Q7ZC4" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="us-securities">
+			<div class="section-head">
+				<div class="section-title">美国证券</div>
+				<span class="pill">券商</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="IBKR 盈透证券">
+					<div class="card-head"><div class="card-title">IBKR 盈透证券</div></div>
+					<a class="link-btn" href="https://ibkr.com/referral/shaobing908" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Schwab 嘉信理财">
+					<div class="card-head"><div class="card-title">Schwab 嘉信理财</div></div>
+					<a class="link-btn" href="https://www.schwab.com/client-referral?refrid=REFEREGNCUPBE" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="BBAE 必贝证券">
+					<div class="card-head"><div class="card-title">BBAE必贝证券</div><span class="tag warn">⏱️ 已过期</span></div>
+					<div class="code-row"><span class="code">stggyjr97</span><button class="copy-btn" data-code="stggyjr97" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://landing.bbaecache.com/m/h5/new-user-reward-v4?lang=zh-CN&f=invite&referral=stggyjr97" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="exchanges">
+			<div class="section-head">
+				<div class="section-title">交易所</div>
+				<span class="pill">加密</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="Bybit KOWLOON 渠道">
+					<div class="card-head"><div class="card-title">Bybit</div><span class="tag"> 渠道</span></div>
+					<div class="code-row"><span class="code">KOWLOON</span><button class="copy-btn" data-code="KOWLOON" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://partner.bybit.com/b/KOWLOON" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Bitget 0ZE48SAU">
+					<div class="card-head"><div class="card-title">Bitget</div></div>
+					<div class="code-row"><span class="code">0ZE48SAU</span><button class="copy-btn" data-code="0ZE48SAU" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.ddjxad.top/zh-CN/referral/register?clacCode=0ZE48SAU&from=%2Fzh-CN%2Fevents%2Freferral-all-program&source=events&utmSource=PremierInviter" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="币安 Binance CPA_0010BZTPBZ">
+					<div class="card-head"><div class="card-title">币安</div></div>
+					<div class="code-row"><span class="code">CPA_0010BZTPBZ</span><button class="copy-btn" data-code="CPA_0010BZTPBZ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.maxweb.black/activity/referral-entry/CPA?ref=CPA_0010BZTPBZ" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="BiyaPay 64691647">
+					<div class="card-head"><div class="card-title">BiyaPay</div></div>
+					<div class="code-row"><span class="code">64691647</span><button class="copy-btn" data-code="64691647" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://biyapay.com/re/64691647" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="欧易 OKX 53900791">
+					<div class="card-head"><div class="card-title">欧易 OKX</div></div>
+					<div class="code-row"><span class="code">53900791</span><button class="copy-btn" data-code="53900791" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Coinbase 67KDAFW">
+					<div class="card-head"><div class="card-title">Coinbase</div></div>
+					<div class="code-row"><span class="code">67KDAFW</span><button class="copy-btn" data-code="67KDAFW" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://coinbase.com/join/67KDAFW?src=ios-link" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="nexo">
+					<div class="card-head"><div class="card-title">nexo</div></div>
+					<a class="link-btn" href="https://nexo.com/ref/iviwjxoyhl?src=ios-link" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Gate VVYXAAXAAQ">
+					<div class="card-head"><div class="card-title">Gate</div></div>
+					<div class="code-row"><span class="code">VVYXAAXAAQ</span><button class="copy-btn" data-code="VVYXAAXAAQ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.gatesite.work/signup/VVYXAAXAAQ?ref_type=103" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Kraken Pro jbpfd8fk">
+					<div class="card-head"><div class="card-title">Kraken Pro</div></div>
+					<div class="code-row"><span class="code">jbpfd8fk</span><button class="copy-btn" data-code="jbpfd8fk" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://proinvite.kraken.com/9f1e/7fv48kq0" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Kraken ftc5zwwb">
+					<div class="card-head"><div class="card-title">Kraken</div></div>
+					<div class="code-row"><span class="code">ftc5zwwb</span><button class="copy-btn" data-code="ftc5zwwb" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://invite.kraken.com/JDNW/0g44pzia" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="LBANK 5IXWC">
+					<div class="card-head"><div class="card-title">LBANK</div></div>
+					<div class="code-row"><span class="code">5IXWC</span><button class="copy-btn" data-code="5IXWC" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://lbank.com/ref/5IXWC" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="MEXC 3YdKy">
+					<div class="card-head"><div class="card-title">MEXC</div></div>
+					<div class="code-row"><span class="code">3YdKy</span><button class="copy-btn" data-code="3YdKy" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://promote.mexc.com/r/sMuw9poX" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="HTX 火币 aj9id223">
+					<div class="card-head"><div class="card-title">HTX 火币</div></div>
+					<div class="code-row"><span class="code">aj9id223</span><button class="copy-btn" data-code="aj9id223" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.htx.com.ec/invite/zh-cn/1f?invite_code=aj9id223" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Bybit EU AV6AAKQ">
+					<div class="card-head"><div class="card-title">Bybit EU</div></div>
+					<div class="code-row"><span class="code">AV6AAKQ</span><button class="copy-btn" data-code="AV6AAKQ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.bybit.eu/invite?ref=AV6AAKQ" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="BitMart VebJ8P">
+					<div class="card-head"><div class="card-title">BitMart</div></div>
+					<div class="code-row"><span class="code">VebJ8P</span><button class="copy-btn" data-code="VebJ8P" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.bitmart.com/zh-CN/invite/VebJ8P" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="OSL Global MMrMsB">
+					<div class="card-head"><div class="card-title">OSL Global</div></div>
+					<div class="code-row"><span class="code">MMrMsB</span><button class="copy-btn" data-code="MMrMsB" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.osl.com/globalEarlyBird?referralcode=MMrMsB" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Neverless">
+					<div class="card-head"><div class="card-title">Neverless</div><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://neverless.com/referral?code=kowloon" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="wallets">
+			<div class="section-head">
+				<div class="section-title">加密钱包</div>
+				<span class="pill">Web3</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="Bitget wallet Pz9w11">
+					<div class="card-head"><div class="card-title">Bitget Wallet</div></div>
+					<div class="code-row"><span class="code">Pz9w11</span><button class="copy-btn" data-code="Pz9w11" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://newshare.bwb.global/zh/invite_earn_coin?inviteCode=Pz9w11&deepLinkType=card&utmSource=referral2.0_copyLink" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="欧易 WEB3 钱包 CTMDB">
+					<div class="card-head"><div class="card-title">欧易 WEB3 钱包</div></div>
+					<div class="code-row"><span class="code">CTMDB</span><button class="copy-btn" data-code="CTMDB" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://web3.okx.com/ul/joindex?ref=CTMDB" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="币安 钱包 BXFHJTA8">
+					<div class="card-head"><div class="card-title">币安 钱包</div></div>
+					<div class="code-row"><span class="code">BXFHJTA8</span><button class="copy-btn" data-code="BXFHJTA8" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://web3.binance.com/referral?ref=BXFHJTA8" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="OneKey YTGPYY">
+					<div class="card-head"><div class="card-title">OneKey</div></div>
+					<div class="code-row"><span class="code">YTGPYY</span><button class="copy-btn" data-code="YTGPYY" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://onekey.so/r/YTGPYY" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Gate WEB3 钱包 MVu18WH8">
+					<div class="card-head"><div class="card-title">Gate WEB3 钱包</div></div>
+					<div class="code-row"><span class="code">MVu18WH8</span><button class="copy-btn" data-code="MVu18WH8" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="http://t.cdapp.net/4fNqaV" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Krak 钱包 @tans0008">
+					<div class="card-head"><div class="card-title">Krak 钱包</div></div>
+					<div class="code-row"><span class="code">@tans0008</span><button class="copy-btn" data-code="@tans0008" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://krak.app/@tans0008" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">注册并法币入10 USD+，向 @tans0008 转账任意金额得10 USD</div>
+				</div>
+				<div class="card" data-search="Base">
+					<div class="card-head"><div class="card-title">Base</div></div>
+					<a class="link-btn" href="https://base.app/invite/kowloon/MTS8302L" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="esim">
+			<div class="section-head">
+				<div class="section-title">手机卡 / eSIM</div>
+				<span class="pill">出行</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="RedteaGo DSTA0003 eSIM">
+					<div class="card-head"><div class="card-title">RedteaGo</div></div>
+					<div class="code-row"><span class="code">DSTA0003</span><button class="copy-btn" data-code="DSTA0003" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Giffgaff 英国 平邮">
+					<div class="card-head"><div class="card-title">Giffgaff（英国）</div></div>
+					<a class="link-btn" href="https://www.giffgaff.com/orders/affiliate/dstan33_1697167106055" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Firsty 可免流 ZGUZ-G876">
+					<div class="card-head"><div class="card-title">Firsty</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">ZGUZ-G876</span><button class="copy-btn" data-code="ZGUZ-G876" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://1firsty.onelink.me/64B4/referral?userId=mv2So4hMTmPEVVvdTpGkMKACA9X2&c=default&af_referrer_uid=1733916092474-5006556840929579339&af_referrer_name=Tans%20ice%20DS%20(DSTansice)&af_channel=mobile_share&af_siteid=6470926128&promoCode=ZGUZ-G876&af_referrer_customer_id=1733916092474-5006556840929579339&pid=af_app_invites" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Roamless 可免流 TANSICBHJ">
+					<div class="card-head"><div class="card-title">Roamless</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">TANSICBHJ</span><button class="copy-btn" data-code="TANSICBHJ" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://go.roamless.com/OOq0/nhjkig0g" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="eskimo PD42427">
+					<div class="card-head"><div class="card-title">eskimo</div></div>
+					<div class="code-row"><span class="code">PD42427</span><button class="copy-btn" data-code="PD42427" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://eskimo.travel/PD42427" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Airalo 可免流 SHAOBI3622">
+					<div class="card-head"><div class="card-title">Airalo</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">SHAOBI3622</span><button class="copy-btn" data-code="SHAOBI3622" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://airalo.go.link/7QHA3" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Nomad 理论可免流 TANSRTRH">
+					<div class="card-head"><div class="card-title">Nomad</div><span class="tag success">💚 理论可免流</span></div>
+					<div class="code-row"><span class="code">TANSRTRH</span><button class="copy-btn" data-code="TANSRTRH" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Pearky">
+					<div class="card-head"><div class="card-title">Pearky</div></div>
+					<a class="link-btn" href="https://pearky.onelink.me/i2sn/oy52ah4t?deep_link_value=tOVp8xBYhK" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Saily TANSES0371">
+					<div class="card-head"><div class="card-title">Saily</div></div>
+					<div class="code-row"><span class="code">TANSES0371</span><button class="copy-btn" data-code="TANSES0371" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="ZetSIM UNL4JLE6L8">
+					<div class="card-head"><div class="card-title">ZetSIM</div></div>
+					<div class="code-row"><span class="code">UNL4JLE6L8</span><button class="copy-btn" data-code="UNL4JLE6L8" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Kolet RQDVW217">
+					<div class="card-head"><div class="card-title">Kolet</div></div>
+					<div class="code-row"><span class="code">RQDVW217</span><button class="copy-btn" data-code="RQDVW217" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="DENT DENT-C4L9-ZFQC-VZ8Q">
+					<div class="card-head"><div class="card-title">Tunz（原DENT）</div></div>
+					<div class="code-row"><span class="code">DENT-C4L9-ZFQC-VZ8Q</span><button class="copy-btn" data-code="DENT-C4L9-ZFQC-VZ8Q" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.dent-app.com?code=DENT-C4L9-ZFQC-VZ8Q" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="BNE eSIM HO4CHJ94 可免流">
+					<div class="card-head"><div class="card-title">BNE eSIM</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">HO4CHJ94</span><button class="copy-btn" data-code="HO4CHJ94" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="GigSky DSTA104 可免流">
+					<div class="card-head"><div class="card-title">GigSky</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">DSTA104</span><button class="copy-btn" data-code="DSTA104" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://gigsky.sng.link/Euypu/kbao?_dl=https%3A%2F%2Fgigsky.sng.link%2Fcustom%2Fsignup&_smtype=3&_p=%7B%22referralCode%22%3A%22DSTA104%22%7D&referralCode=DSTA104" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="VeloeSIM TANS2459 可免流">
+					<div class="card-head"><div class="card-title">VeloeSIM</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">TANS2459</span><button class="copy-btn" data-code="TANS2459" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Simly 6707F9AE8755 理论可免流">
+					<div class="card-head"><div class="card-title">Simly</div><span class="tag success">💚 理论可免流</span></div>
+					<div class="code-row"><span class="code">6707F9AE8755</span><button class="copy-btn" data-code="6707F9AE8755" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Roam 71872991 理论可免流">
+					<div class="card-head"><div class="card-title">Roam</div><span class="tag success">💚 理论可免流</span></div>
+					<div class="code-row"><span class="code">71872991</span><button class="copy-btn" data-code="71872991" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="RedBull Mobile RCW0v98ypp4dKlVd 可免流">
+					<div class="card-head"><div class="card-title">RedBull Mobile</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">RCW0v98ypp4dKlVd</span><button class="copy-btn" data-code="RCW0v98ypp4dKlVd" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Helium Mobile 96G47TJ 已过期 理论可免流">
+					<div class="card-head"><div class="card-title">Helium Mobile</div><span class="tag warn">⏱️ 已过期</span></div>
+					<div class="code-row"><span class="code">96G47TJ</span><button class="copy-btn" data-code="96G47TJ" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="giffgaff 激活码">
+					<div class="card-head"><div class="card-title">giffgaff 激活码</div></div>
+					<a class="link-btn" href="https://hsbc.com.cv/p/eb66e574" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Truely 一天无限流量 G2KJf3C9C1CC5k">
+					<div class="card-head"><div class="card-title">Truely（一天无限流量）</div></div>
+					<div class="code-row"><span class="code">G2KJf3C9C1CC5k</span><button class="copy-btn" data-code="G2KJf3C9C1CC5k" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Textr eSIM 5FKHGT">
+					<div class="card-head"><div class="card-title">Textr eSIM</div></div>
+					<div class="code-row"><span class="code">5FKHGT</span><button class="copy-btn" data-code="5FKHGT" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Hubby HMU6VRW3CPCR">
+					<div class="card-head"><div class="card-title">Hubby</div></div>
+					<div class="code-row"><span class="code">HMU6VRW3CPCR</span><button class="copy-btn" data-code="HMU6VRW3CPCR" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Globe YO">
+					<div class="card-head"><div class="card-title">Globe YO</div></div>
+					<a class="link-btn" href="https://globalyo.onelink.me/oRcE/ukrf7q2l" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Numero RE_206PO">
+					<div class="card-head"><div class="card-title">Numero</div></div>
+					<div class="code-row"><span class="code">RE_206PO</span><button class="copy-btn" data-code="RE_206PO" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="YOHO">
+					<div class="card-head"><div class="card-title">YOHO</div></div>
+					<a class="link-btn" href="https://yohomobile.com/?__referer_id=01JT8KY7J2BKVW82EM2HTWX9TM" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="StaffTraveler REF-KPMUY7ON">
+					<div class="card-head"><div class="card-title">StaffTraveler eSIM</div></div>
+					<div class="code-row"><span class="code">REF-KPMUY7ON</span><button class="copy-btn" data-code="REF-KPMUY7ON" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="keepgo">
+					<div class="card-head"><div class="card-title">keepgo</div></div>
+					<a class="link-btn" href="https://keepgo.refr.cc/default/u/tansicedsdstansice?s=sp&t=cp" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="iRoamly KyGhFNL">
+					<div class="card-head"><div class="card-title">iRoamly</div></div>
+					<div class="code-row"><span class="code">KyGhFNL</span><button class="copy-btn" data-code="KyGhFNL" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="eSIM Data RedTeago CDHD0002">
+					<div class="card-head"><div class="card-title">eSIM Data by RedTeago</div></div>
+					<div class="code-row"><span class="code">CDHD0002</span><button class="copy-btn" data-code="CDHD0002" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="eSIMEasy EZ39437429699291">
+					<div class="card-head"><div class="card-title">eSIMEasy</div></div>
+					<div class="code-row"><span class="code">EZ39437429699291</span><button class="copy-btn" data-code="EZ39437429699291" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Just eSIM RTR2GG55">
+					<div class="card-head"><div class="card-title">Just eSIM</div></div>
+					<div class="code-row"><span class="code">RTR2GG55</span><button class="copy-btn" data-code="RTR2GG55" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Firsty UR6P-BUXQ 可免流">
+					<div class="card-head"><div class="card-title">Firsty（可免流 2）</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">UR6P-BUXQ</span><button class="copy-btn" data-code="UR6P-BUXQ" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Skinny 2CG4JV7 可免流">
+					<div class="card-head"><div class="card-title">Skinny</div><span class="tag success">💚 可免流</span></div>
+					<div class="code-row"><span class="code">2CG4JV7</span><button class="copy-btn" data-code="2CG4JV7" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="CTExcel UK CPWVSU 已过期">
+					<div class="card-head"><div class="card-title">CTExcel UK</div><span class="tag warn">⏱️ 已过期</span></div>
+					<div class="code-row"><span class="code">CPWVSU</span><button class="copy-btn" data-code="CPWVSU" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.ctexcel.com/uk/buycard/fillinfos?automatic=false&packageType=4&recommendCode=CPWVSU&isNewsCard=true" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Sooty 0447d7">
+					<div class="card-head"><div class="card-title">Sooty</div></div>
+					<div class="code-row"><span class="code">0447d7</span><button class="copy-btn" data-code="0447d7" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://sootyai.onelink.me/2Pxq?af_xp=referral&pid=User_invite&af_dp=sooty%3A%2F%2F&promo=0447d7&screenName=promoCode" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Frewie 6860345889">
+					<div class="card-head"><div class="card-title">Frewie</div></div>
+					<div class="code-row"><span class="code">6860345889</span><button class="copy-btn" data-code="6860345889" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="USIMS">
+					<div class="card-head"><div class="card-title">USIMS</div><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://referral.usims.com/ROBq/y7il6nay" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="remit">
+			<div class="section-head">
+				<div class="section-title">汇款</div>
+				<span class="pill">跨境</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="Wise 汇款 shaobingy">
+					<div class="card-head"><div class="card-title">Wise 汇款</div></div>
+					<div class="code-row"><span class="code">shaobingy</span><button class="copy-btn" data-code="shaobingy" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://wise.com/invite/ihpc/shaobingy" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="熊猫速汇 D9G6VU">
+					<div class="card-head"><div class="card-title">熊猫速汇</div></div>
+					<div class="code-row"><span class="code">D9G6VU</span><button class="copy-btn" data-code="D9G6VU" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="Paysend 04ieyf">
+					<div class="card-head"><div class="card-title">Paysend</div></div>
+					<div class="code-row"><span class="code">04ieyf</span><button class="copy-btn" data-code="04ieyf" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://paysend.com/referral/04ieyf" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Remitly">
+					<div class="card-head"><div class="card-title">Remitly</div></div>
+					<a class="link-btn" href="https://remit.ly/17zjgvqy" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="Krak 转账奖励 @tans0008">
+					<div class="card-head"><div class="card-title">Krak 转账奖励</div></div>
+					<div class="code-row"><span class="code">@tans0008</span><button class="copy-btn" data-code="@tans0008" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://krak.app/@tans0008" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">注册后法币入10 USD+，再向 @tans0008 转账任意金额得10 USD</div>
+				</div>
+				<div class="card" data-search="LemFi">
+					<div class="card-head"><div class="card-title">LemFi</div><span class="tag">🎁 邀请奖励</span></div>
+					<div class="code-row"><span class="code">SHAOD4Y9</span><button class="copy-btn" data-code="SHAOD4Y9" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://referral.lemfi.com/SlU0YckIvZb" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">汇款100欧元+成功，得15欧元现金</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="vps-earn">
+			<div class="section-head">
+				<div class="section-title">vps 挂机赚钱</div>
+				<span class="pill">被动</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="traffmonetizer">
+					<div class="card-head"><div class="card-title">traffmonetizer</div></div>
+					<a class="link-btn" href="https://traffmonetizer.com/?aff=977147" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="repocket">
+					<div class="card-head"><div class="card-title">repocket</div></div>
+					<a class="link-btn" href="https://link.repocket.com/YJm9" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="packetstream">
+					<div class="card-head"><div class="card-title">packetstream</div></div>
+					<a class="link-btn" href="https://packetstream.io/?psr=70Ix" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="earnfm TANST4TT">
+					<div class="card-head"><div class="card-title">earnfm</div></div>
+					<a class="link-btn" href="https://earn.fm/ref/TANST4TT" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="peer2profit">
+					<div class="card-head"><div class="card-title">peer2profit</div></div>
+					<a class="link-btn" href="https://t.me/peer2profit_app_bot?start=167496353863d5ea529a71f" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="iproyal pawns 1232766">
+					<div class="card-head"><div class="card-title">iproyal pawns</div></div>
+					<a class="link-btn" href="https://pawns.app/?r=1232766" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="挂机 iproyal pawns">
+					<div class="card-head"><div class="card-title">iproyal-pawns</div><span class="tag">🎁 邀请奖励</span><span class="tag"> 挂机赚钱</span></div>
+					<a class="link-btn" href="https://pawns.app/?r=1232766" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="card-sub">邀请链接</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="vps-reco">
+			<div class="section-head">
+				<div class="section-title">VPS 推荐</div>
+				<span class="pill">工具</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="RackNerd">
+					<div class="card-head"><div class="card-title">RackNerd</div></div>
+					<a class="link-btn" href="https://my.racknerd.com/aff.php?aff=9970" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="PureVPN 免费31天">
+					<div class="card-head"><div class="card-title">PureVPN（免费31天）</div></div>
+					<a class="link-btn" href="https://www.purevpn.com/refer-a-friend?referrer=b1lDcEJVUmFWTDVJTlJHZm4rblZvSHJES3RoRmVRUUR1Wkc1VFgvSkJsQ0pBV2xXTVRaYkhzRVJZTG9mSmYyOQ==" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="SurfShark 免费31天">
+					<div class="card-head"><div class="card-title">SurfShark（免费31天）</div></div>
+					<a class="link-btn" href="https://surfshark.club/friend/gzahVLVr" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="雨云服务器">
+					<div class="card-head"><div class="card-title">雨云服务器</div></div>
+					<div class="code-row"><span class="code">MTc1NTMx</span><button class="copy-btn" data-code="MTc1NTMx" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.rainyun.com/MTc1NTMx_" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="rebate">
+			<div class="section-head">
+				<div class="section-title">返利网站</div>
+				<span class="pill">返现</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="ShopBack owuafO">
+					<div class="card-head"><div class="card-title">ShopBack</div></div>
+					<div class="code-row"><span class="code">owuafO</span><button class="copy-btn" data-code="owuafO" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://app.shopback.com/pmOwFIVkbPb" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="返利 TopCashback">
+					<div class="card-head"><div class="card-title">TopCashback US</div><span class="tag"> 返利</span><span class="tag">🎁 邀请奖励</span></div>
+					<a class="link-btn" href="https://www.topcashback.com/ref/tans0008/" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="card-sub">返利平台</div>
+				</div>
+				<div class="card" data-search="Rakuten">
+					<div class="card-head"><div class="card-title">Rakuten</div></div>
+					<div class="code-row"><span class="code">DSTANS39</span><button class="copy-btn" data-code="DSTANS39" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://www.rakuten.com/r/DSTANS39?eeid=44749" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="domains">
+			<div class="section-head">
+				<div class="section-title">域名推荐</div>
+				<span class="pill">工具</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="顶级CV域名">
+					<div class="card-head"><div class="card-title">顶级 CV 域名</div></div>
+					<a class="link-btn" href="https://www.hello.cv/?via=fuck" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="免费 ipv6 反向 域名">
+					<div class="card-head"><div class="card-title">免费ipv6反向域名</div></div>
+					<a class="link-btn" href="https://nic.qfff.de/" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="foreign">
+			<div class="section-head">
+				<div class="section-title">其他国外平台</div>
+				<span class="pill">杂项</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="Fiverr">
+					<div class="card-head"><div class="card-title">Fiverr</div></div>
+					<a class="link-btn" href="https://www.fiverr.com/pe/o8VpYkX" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="微软 bing Rewards">
+					<div class="card-head"><div class="card-title">微软bing Rewards</div></div>
+					<a class="link-btn" href="https://rewards.bing.com/welcome?rh=BD1D47A0&ref=rafsrchae" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="domestic">
+			<div class="section-head">
+				<div class="section-title">其他国内平台</div>
+				<span class="pill">国内</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="网易音乐人 UMTHVQH">
+					<div class="card-head"><div class="card-title">网易音乐人</div></div>
+					<div class="code-row"><span class="code">UMTHVQH</span><button class="copy-btn" data-code="UMTHVQH" title="点击即可复制，免费注册可用">复制</button></div>
+				</div>
+				<div class="card" data-search="网心云 x6qYiTLw">
+					<div class="card-head"><div class="card-title">网心云</div></div>
+					<div class="code-row"><span class="code">x6qYiTLw</span><button class="copy-btn" data-code="x6qYiTLw" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://act.walk-live.com/acts/invite?inviteid=x6qYiTLw" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="白嫖 iOS 付费软件">
+					<div class="card-head"><div class="card-title">白嫖 iOS 付费软件</div></div>
+					<a class="link-btn" href="http://www.iios.fun/r/LXFRPU" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="续赚网 197892489 卡券售卖">
+					<div class="card-head"><div class="card-title">续赚网（卡券）</div></div>
+					<div class="code-row"><span class="code">197892489</span><button class="copy-btn" data-code="197892489" title="点击即可复制，免费注册可用">复制</button></div>
+					<div class="note">卡券售卖 wap.xuzuan.cn</div>
+				</div>
+				<div class="card" data-search="视权益">
+					<div class="card-head"><div class="card-title">视权益</div></div>
+					<a class="link-btn" href="http://m.shiquanyi.cn/sign/up?code=2A03QPCME0" target="_blank" rel="noreferrer">打开链接</a>
+					<div class="note">卡券售卖</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="cn-bank">
+			<div class="section-head">
+				<div class="section-title">国内银行</div>
+				<span class="pill">本地</span>
+			</div>
+			<div class="grid">
+				<div class="card" data-search="微众银行 0Z885n">
+					<div class="card-head"><div class="card-title">微众银行</div></div>
+					<div class="code-row"><span class="code">0Z885n</span><button class="copy-btn" data-code="0Z885n" title="点击即可复制，免费注册可用">复制</button></div>
+					<a class="link-btn" href="https://m.webank.com/s/hj/focus2/client/index.html?fid=5360&inviteCode=0Z885n&mgmAid=17919&shareFrom=appimg&sid=f1daf35ba8e14d6a8cee56384fc7884f" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="招商银行 信用卡 推荐">
+					<div class="card-head"><div class="card-title">招商银行信用卡推荐</div></div>
+					<a class="link-btn" href="https://res.cc.cmbimg.com/itafront/Frog/#/mgmLogin/api3xxmgmlj4/remote?webAddress=WZL_XCX_DCXHW&where=zs7_ty1&pageName=MRecContract&activityTitle=MGMXSDS202507TY1&appChn=05&dsid=&dscontr=&pretrackno=cd5933be0c37426b9970ca12ea3dd9ff&pretrack=10403669&mgmSm2Flag=1&mgmSource=share&m1TraceId=cd5933be0c37426b9970ca12ea3dd9ff" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="建设银行 信用卡 推荐">
+					<div class="card-head"><div class="card-title">建设银行信用卡推荐</div></div>
+					<a class="link-btn" href="https://event.ccbft.com/e/ccb_gjb/jcbC6kwviy0vPe0ZE7lNBA?qrId=WVhaVDoxOTM5ODEzNjkxMzM2MTcxNTI5MjAyOA==&__dmsp_sharemdid=ZHCMD_e9bcb889-2ea0-4b7d-af65-681bfa9d1fe0&__dmsp_shareDepth=1&CCB_Chnl=7012465" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+				<div class="card" data-search="兴业银行 VIP 在线 开户">
+					<div class="card-head"><div class="card-title">兴业银行VIP在线开户</div></div>
+					<a class="link-btn" href="https://comt.cib.com.cn/recommend/recommended_index.html?shortUrl=z6XWEbkO&activityNo=CR2019042810001" target="_blank" rel="noreferrer">打开链接</a>
+				</div>
+			</div>
+		</section>
+
+		<div class="empty" id="empty" style="display:none;">🔍 未找到匹配结果，试试搜索「香港银行」或「交易所」？</div>
+		<div class="contact-links footer-contacts"><a class="contact-link" href="https://t.me/v3ssrray" target="_blank" rel="noreferrer">💬 加入社群</a><a class="contact-link" href="https://t.me/v3mew" target="_blank" rel="noreferrer">📢 订阅更新</a></div>		<div class="stats-footer">🎁 <strong>135</strong> 个精选福利免费领取 · ⚡ 每日更新 · 💯 真实可用</div>		<footer class="footer">© 2025 <a href="https://010085.xyz" target="_blank">星零八五 | Star085</a> - All Rights Reserved</footer>
+	</div>
+
+
+	<script>
+		const search = document.getElementById('search');
+		const cards = Array.from(document.querySelectorAll('.card'));
+		const empty = document.getElementById('empty');
+
+		search?.addEventListener('input', (e) => {
+			const q = (e.target.value || '').trim().toLowerCase();
+			let visible = 0;
+			cards.forEach(card => {
+				const text = card.dataset.search ? card.dataset.search.toLowerCase() : card.innerText.toLowerCase();
+				const hit = !q || text.includes(q);
+				card.style.display = hit ? '' : 'none';
+				if (hit) visible++;
+			});
+			empty.style.display = visible === 0 ? 'block' : 'none';
+		});
+
+		document.addEventListener('click', async (ev) => {
+			const btn = ev.target.closest('.copy-btn');
+			if (!btn) return;
+			const code = btn.dataset.code;
+			if (!code) return;
+			try {
+				await navigator.clipboard.writeText(code);
+				// 统计复制次数，增强成就感
+				const count = parseInt(localStorage.getItem('copyCount') || '0') + 1;
+				localStorage.setItem('copyCount', count);
+				btn.textContent = '✓ 已复制(已领' + count + '个)';
+				btn.style.background = 'rgba(34, 197, 94, 0.2)';
+				btn.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+				setTimeout(() => { 
+					btn.textContent = '复制'; 
+					btn.style.background = '';
+					btn.style.borderColor = '';
+				}, 2200);
+			} catch (err) {
+				btn.textContent = '✗ 失败';
+				setTimeout(() => { btn.textContent = '复制'; }, 1400);
+			}
+		});
+	</script>
+</body>
+</html>
